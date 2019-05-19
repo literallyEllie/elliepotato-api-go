@@ -6,12 +6,12 @@ import "net/http"
 func HandleIdentifyEndpoint(request APIRequest) APIResponse {
 	var session APISession
 
-	if request.Method == "new" {
+	if request.Method == "NewSession" {
 		session = createSession(request)
 		return APIResponse{http.StatusOK, session.SessionKey}
 	}
 
-	if request.Method == "invalidate" {
+	if request.Method == "InvalidateSession" {
 		invalidateSession(request.SessionKey)
 		return ResponseOK
 	}

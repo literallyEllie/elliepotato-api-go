@@ -9,13 +9,18 @@ var pluginVersions = map[string]string {
 
 // Handler for the plugin end point allowing to get the most up-to-date version.
 func HandlePluginEndpoint(request APIRequest) APIResponse {
-	toCheckPlugin := request.Payload["plugin-id"]
 
-	currentVersion, validPlugin := pluginVersions[toCheckPlugin]
+	if request.Method == "GetVersion" {
+		toCheckPlugin := request.Payload["plugin-id"]
 
-	if !validPlugin {
-		return ResponseUnknownPlugin
+		currentVersion, validPlugin := pluginVersions[toCheckPlugin]
+
+		if !validPlugin {
+			return ResponseUnknownPlugin
+		}
+
+		return APIResponse{http.StatusOK, currentVersion}
 	}
 
-	return APIResponse{http.StatusOK, currentVersion}
+	return ResponseInvalidMethod
 }
