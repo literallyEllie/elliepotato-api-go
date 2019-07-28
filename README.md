@@ -40,7 +40,9 @@ A full list of API responses can be found [Here](https://github.com/literallyEll
 | :-------: | :------------------: | :-------: |
 | plugin-id | ID of plugin to get. | Yes       |
 
-If "plugin-id" is not a registered plugin, will return 404 error.
+### Responses:
+* If "plugin-id" is not a registered plugin, will return 404 error.
+* A 200 OK response will be returned with no additional information.
 
 ## Service methods
 
@@ -50,8 +52,9 @@ If "plugin-id" is not a registered plugin, will return 404 error.
 | login_key | Login key to access the system. | Yes       |
 | to | The service to subscribe to. | Yes       |
 
-If "to" isn't a valid service, will return 404 error.
-A 200 OK response wil be returned with no additional information.
+### Responses:
+* If "to" isn't a valid service, will return 404 error.
+* A 200 OK response wil be returned with no additional information.
 
 ### GetStatus
 | Parameter | Description          | Required? |
@@ -59,9 +62,10 @@ A 200 OK response wil be returned with no additional information.
 | login_key | Login key to access the system. | Yes       |
 | to | The service to get the status of. | Yes       |
 
-If "to" isn't a valid service, will return 404 error.
-If the service is NOT active, will return 200 with "not_active"
-A 200 OK response will be returned allong with a JSON escaped string of [ep_service#ActiveService](https://github.com/literallyEllie/elliepotato-api/blob/master/src/main/ep_service.go#L17) 
+### Responses:
+* If "to" isn't a valid service, will return 404 error.
+* If the service is NOT active, will return 200 with "not_active"
+* A 200 OK response will be returned allong with a JSON escaped string of [ep_service#ActiveService](https://github.com/literallyEllie/elliepotato-api/blob/master/src/main/ep_service.go#L17) 
 
 ### Status
 | Parameter | Description          | Required? |
@@ -70,9 +74,10 @@ A 200 OK response will be returned allong with a JSON escaped string of [ep_serv
 | access_key | Access key to manage the ID | Yes       |
 | type | Either "alive" or "exit". Alive is recognized as a string and exit is recognized as the service going offline. | Yes       |
 
-If "id" isn't a valid service, will return a 404 error.
-If the access_key cannot manage the ID, will return a 400 error.
-A 200 OK response will be returned with no additional information.
+### Responses:
+* If "id" isn't a valid service, will return a 404 error.
+* If the access_key cannot manage the ID, will return a 400 error.
+* A 200 OK response will be returned with no additional information.
 
 ___
 ## --TRASH BIN--
@@ -89,9 +94,9 @@ Will send back your session ID with a 200 OK code.
 | Parameter | Description          | Required? |
 | :-------: | :------------------: | :-------: |
 
-
-Will invalidate the "session" bundled with your request. 
-An 200 OK response will be returned regarldess of the outcome.
+### Responses:
+* Will invalidate the "session" bundled with your request. 
+* An 200 OK response will be returned regarldess of the outcome.
 
 
 *More will be added when new things happen!!*
