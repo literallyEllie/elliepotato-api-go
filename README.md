@@ -13,6 +13,7 @@ It will be hosted on elliepotato.de
 | endpoint      | The endpoint the request is intended for.       | Yes                            |
 | method        | The method for the endpoint to read.            | Yes                            |
 | payload       | Payload information for the endpoint to process.| No                             |
+| login_key      | A premeditated login key       | Not all the time - Only when specified.                            |
 
 If there is an issue decoding the request, an ambigious 400 error will be returned.
 If a required field is missing, an ambigious error 400 error will be returned.
