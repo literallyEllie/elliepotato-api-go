@@ -2,38 +2,49 @@ package main
 
 import (
 	"encoding/json"
+	"github.com/gorilla/mux"
 	"log"
 	"net/http"
 )
 
 const (
- 	Version = "v0.1"
-	APIVersion = "v1"
+	Version       = "v0.1-DEV"
+	APIVersion    = "v1"
 	LocalBasePath = "/api/" + APIVersion
 
- 	EndpointIdentify = "identify"
-	EndpointPlugin = "plugin"
+	EndpointIdentify = "identify"
+	EndpointPlugin   = "plugin"
+	EndpointService  = "service"
 )
 
 // Struct for any response from the API server
 type APIResponse struct {
-	Code 	int		`json:"code"`
-	Message string	`json:"message"`
+	Code    int    `json:"code"`
+	Message string `json:"message"`
 }
 
 // API server for me to do random things and will develop into something.
 func main() {
 	log.Println("Loading elliepotato-api version", Version)
 
+	router := mux.NewRouter()
+
 	// Main handle
-	http.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
+	router.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
 		WriteAPIResponse(writer, ResponseBadAPIRequest)
 	})
-	// v1
-	http.HandleFunc(LocalBasePath, APIv1)
-	http.HandleFunc(ResourcePath, HandleResourceRequest)
 
-	http.ListenAndServe(":8080", http.DefaultServeMux)
+	// Load services.
+	LoadServices()
+	loadCredentials()
+
+	// v1
+	router.HandleFunc(LocalBasePath, APIv1)
+	router.HandleFunc(ResourcePath, HandleResourceRequest)
+
+	http.ListenAndServe(":9489", router)
+
+	close(stopChecker)
 }
 
 // Allows for a quick responder when responding to requests.

@@ -9,15 +9,17 @@ import (
 type (
 	// Struct for all incoming requests to the main API to be parsed into.
 	APIRequest struct {
-		SessionKey 	string				`json:"session"`
-		Endpoint	string				`json:"endpoint"`
-		Method 		string 				`json:"method"`
-		Payload 	map[string]string	`json:"payload"`
+		SessionKey string            `json:"session"`
+		Endpoint   string            `json:"endpoint"`
+		Method     string            `json:"method"`
+		Payload    map[string]string `json:"payload"`
+
+		IP string
 	}
 
 	// Struct for all sessions - won't be created for every connection.
 	APISession struct {
-		Created time.Time
+		Created    time.Time
 		SessionKey string
 	}
 )
@@ -31,7 +33,7 @@ func APIv1(w http.ResponseWriter, req *http.Request) {
 	decodeErr := decoder.Decode(&parsedReq)
 
 	if decodeErr != nil {
-		LogErr("Error decoding request " + decodeErr.Error())
+		LogErr("Error decoding request " + decodeErr.Error() + " (from " + req.Host + ")")
 		WriteAPIResponse(w, ResponseBadAPIRequest)
 		return
 	}
@@ -43,6 +45,8 @@ func APIv1(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
+	parsedReq.IP = req.RemoteAddr
+
 	var response APIResponse
 
 	// Direct to endpoint
@@ -53,6 +57,8 @@ func APIv1(w http.ResponseWriter, req *http.Request) {
 	case EndpointPlugin:
 		response = HandlePluginEndpoint(parsedReq)
 		break
+	case EndpointService:
+		response = HandleServiceEndpoint(parsedReq)
 	default:
 		response = ResponseInvalidEndpoint
 	}

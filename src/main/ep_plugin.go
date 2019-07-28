@@ -3,8 +3,9 @@ package main
 import "net/http"
 
 // Contains a map of all the plugin versions I have.
-var pluginVersions = map[string]string {
+var pluginVersions = map[string]string{
 	"cmd-alias": "1.3.1",
+	"sleepy":    "1.1-RELEASE",
 }
 
 // Handler for the plugin end point allowing to get the most up-to-date version.
