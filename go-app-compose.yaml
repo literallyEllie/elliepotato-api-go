@@ -1,0 +1,10 @@
+version: '2'
+services:
+  api-server:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: .
+    environment:
+      - VIRTUAL_HOST=api.elliepotato.de
+      - LETSENCRYPT_HOST=api.elliepotato.de
