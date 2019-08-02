@@ -3,7 +3,7 @@ services:
   api-server:
     restart: always
     build:
-      dockerfile: Dockerfile
+      dockerfile: elliepotato/elliepotato-api
       context: .
     environment:
       - VIRTUAL_HOST=api.elliepotato.de
