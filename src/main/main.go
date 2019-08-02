@@ -8,9 +8,9 @@ import (
 )
 
 const (
-	Version       = "v0.1-DEV"
+	Version       = "v0.2-DEV"
 	APIVersion    = "v1"
-	LocalBasePath = "/api/" + APIVersion
+	LocalBasePath = APIVersion
 
 	EndpointIdentify = "identify"
 	EndpointPlugin   = "plugin"
@@ -42,7 +42,7 @@ func main() {
 	router.HandleFunc(LocalBasePath, APIv1)
 	router.HandleFunc(ResourcePath, HandleResourceRequest)
 
-	http.ListenAndServe(":9489", router)
+	http.ListenAndServe(":80", router)
 
 	close(stopChecker)
 }
@@ -51,5 +51,5 @@ func main() {
 func WriteAPIResponse(writer http.ResponseWriter, response APIResponse) {
 	formattedResponse, _ := json.Marshal(&response)
 	writer.WriteHeader(response.Code)
-	writer.Write([]byte(formattedResponse))
+	writer.Write(formattedResponse)
 }

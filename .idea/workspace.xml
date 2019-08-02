@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c19377d-4e03-48dd-93c3-3cf0691dffe2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cfg/services.cfg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/priv/credentials.cfg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/api_auth.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/ep_service.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/api_response.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/api_response.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/api_session.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/api_session.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/api_v1.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/api_v1.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/ep_plugin.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ep_plugin.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_connector.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_connector.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
