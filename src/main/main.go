@@ -8,9 +8,9 @@ import (
 )
 
 const (
-	Version       = "v0.2-DEV"
+	Version       = "v0.1-DEV"
 	APIVersion    = "v1"
-	LocalBasePath = APIVersion
+	LocalBasePath = "/" + APIVersion
 
 	EndpointIdentify = "identify"
 	EndpointPlugin   = "plugin"
