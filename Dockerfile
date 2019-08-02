@@ -11,3 +11,5 @@ WORKDIR /usr/bin
 COPY --from=build /go/src/app/bin /go/bin
 EXPOSE 80
 ENTRYPOINT /go/bin/web-app --port 80
+
+CMD ["docker-compose", "-f", "nginx-proxy-compose.yaml", "up", "-d"]
