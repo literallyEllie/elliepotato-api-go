@@ -38,7 +38,7 @@ func APIv1(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	LogInfo("Incoming request from " + req.Host + " (Endpoint: " + parsedReq.Endpoint + ", Method: " + parsedReq.Method + ")")
+	LogInfo("Incoming request from " + req.RemoteAddr + " (Endpoint: " + parsedReq.Endpoint + ", Method: " + parsedReq.Method + ")")
 
 	if parsedReq.Endpoint == "" || parsedReq.Method == "" {
 		WriteAPIResponse(w, ResponseBadAPIRequest)
