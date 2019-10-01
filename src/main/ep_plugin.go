@@ -4,7 +4,7 @@ import "net/http"
 
 // Contains a map of all the plugin versions I have.
 var pluginVersions = map[string]string{
-	"cmd-alias": "1.3.1",
+	"cmd-alias": "1.3.2-RELEASE",
 	"sleepy":    "1.2-RELEASE",
 }
 
